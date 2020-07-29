@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="musicos">
+            {% for musician in musicians %}
+                {{musician.first_name}}: {{musician.instrument}}<br>
+
+            {% endfor %}
+        </div>
+        <a href="{% url 'core:index' %}"><button>Inicio</button></a>
+        <a href="{% url 'core:teste' %}"><button>Teste</button></a>
+    </body>
+</html>

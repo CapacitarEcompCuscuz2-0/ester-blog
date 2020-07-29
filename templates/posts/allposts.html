@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Posts</title>
+    </head>
+    <body>
+        <h1 class="musicos">Blog da Bolinha</h1>
+        <div class="musicos">
+            {% for post in posts %}
+                <div class="postagem">
+                    <h2>{{post.title}}</h2><br>
+                    <h4>Publicado por <i>{{post.author}}</i> em {{post.post_date}}</h4><br>
+                    {% if post.post_date != post.last_edit %}
+                        <h5>Editado em {{post.last_edit}}</h5><br>
+                    {% endif %}
+                    <p>{{post.text}}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <style>
+            .musicos{
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+            .postagem{
+                width: 80%;
+                border: 1px solid gray;
+            }
+        </style>
+    </body>
+</html>
