@@ -5,6 +5,17 @@
         <title>Blog da Bolinha</title>
     </head>
     <body>
+        <h2>Olá, 
+        {% if request.user.is_authenticated %}
+            {{request.user}}!
+            </h2>
+            <a href="{% url 'users:logout' %}"><button>Sair</button></a>
+        {% else %}
+            visitante!
+            </h2>
+            <a href="{% url 'users:login' %}"><button>Entrar</button></a>
+        {% endif %}
+        <br>
         <p>Bem-vindo ao Blog :D</p>
         <a href="{% url 'posts:allposts' %}"><button>Ver Posts</button></a>
     </body>
