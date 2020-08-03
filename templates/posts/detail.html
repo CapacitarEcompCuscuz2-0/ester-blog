@@ -10,6 +10,7 @@
         <h4>{{posts.author}}</h4><br>
         {{posts.text}}<br><br>
         <a href="{% url 'posts:update' posts.pk %}"><button>Editar Post</button></a>
+        <a href="{% url 'posts:deletepost' posts.pk %}"><button>Excluir Post</button></a>
         <a href="{% url 'posts:allposts' %}"><button>Voltar</button></a>
     </body>
 </html> 

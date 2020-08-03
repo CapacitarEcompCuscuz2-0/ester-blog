@@ -5,13 +5,38 @@
         <title>Login</title>
     </head>
     <body>
-        <h3>Entrar</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Login">
-        </form>
-        <br>
-        <a href="{% url 'posts:allposts' %}"><button>Continuar sem login</button></a>
+        <div id="login">
+            <h2>Entrar</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input id="entrar" type="submit" value="Login">
+            </form>
+            <br>
+            <a href="{% url 'posts:allposts' %}"><button>Continuar sem login</button></a>
+        </div>
     </body>
+    <style>
+        body{
+            font-family: monospace;
+            background-color: cadetblue;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            border: none;
+        }
+        button{
+            border: none;
+            cursor: pointer;
+        }
+        #entrar{
+            cursor: pointer;
+        }
+        #login{
+            border: solid 1px darkslategray;
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
 </html> 

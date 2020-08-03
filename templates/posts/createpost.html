@@ -2,21 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Blog da Bolinha</title>
+        <title>Novo post</title>
     </head>
     <body>
-        <div id="boasvindas">
-            <h2>Olá, 
+        <div id="novopost">
+            <h2>Novo post</h2>
             {% if request.user.is_authenticated %}
-                {{request.user}}! Bem-vindo ao Blog da Bolinha.
-                </h2>
-                <a href="{% url 'users:logout' %}"><button>Sair</button></a>
+                <form  method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input id="enviar" type="submit" value="Criar">
+                    
+                </form>
             {% else %}
-                visitante! Bem-vindo ao Blog da Bolinha.
-                </h2>
+                <p>Você precisa entrar para adicionar um post.</p>
                 <a href="{% url 'users:login' %}"><button>Entrar</button></a>
+                <br>
             {% endif %}
-            <a href="{% url 'posts:allposts' %}"><button>Ver Posts</button></a>
+            <a href="{% url 'posts:allposts' %}"><button id="voltar">Voltar</button></a>
         </div>
     </body>
     <style>
@@ -27,18 +30,22 @@
             display: flex;
             justify-content: center;
         }
+        input{
+            border: none;
+        }
         button{
             border: none;
             cursor: pointer;
         }
-        #boasvindas{
+        #enviar{
+            cursor: pointer;
+        }
+        #voltar{
+            margin-top: 1vh;
+        }
+        #novopost{
             border: solid 1px darkslategray;
-            height: 25vh;
             padding: 10px 10px 10px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
         }
     </style>
 </html>

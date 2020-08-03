@@ -10,13 +10,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class UserListView(generic.ListView):
     model = User
-    template_name = 'users/list.html'
+    template_name = 'users.html' # <<<<<<<<
     context_object_name = 'users'
 
 class UserDetailView(generic.DetailView):
     model = User
-    context_object_name = 'users'
-    template_name = 'users/list.html'
+    context_object_name = 'user'
+    template_name = 'users/userspace.html'
 
 class UserLoginView(views.LoginView):
     template_name = 'users/login.html'
@@ -25,7 +25,7 @@ class UserSignupView(generic.CreateView):
     model = User
     form_class = UserSignupForm
     template_name = 'users/signup.html'
-    success_url = reverse_lazy('posts:allposts')
+    success_url = reverse_lazy('posts:index')
 
 class UserLogoutView(LoginRequiredMixin, views.LogoutView):
     pass 

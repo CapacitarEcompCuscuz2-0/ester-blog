@@ -16,6 +16,17 @@ class PostListView(generic.ListView):
     context_object_name = 'posts'
     template_name = 'posts/allposts.html'
 
+class PostCreateView(generic.CreateView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = 'posts/createpost.html'
+    success_url = reverse_lazy('posts:allposts')
+    fields = ['title', 'text']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(PostCreateView, self).form_valid(form)
+
 class PostDeleteView(generic.DeleteView):
     model = Post
     template_name = 'posts/deletepost.html'
