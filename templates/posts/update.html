@@ -5,13 +5,46 @@
         <title>Editar post</title>
     </head>
     <body>
-        <h2>Editar</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Salvar">
-        </form>
-        <br>
-        <a href="{% url 'posts:detail' post.pk %}"><button>Voltar</button></a>
+        <div id="conteudo">
+            {% if request.user == post.author %}
+                <h2>Editar</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                <input id="salvar" type="submit" value="Salvar">
+                </form>
+            {% else %}
+                <h2>Você não pode editar esse post.<br>Tente <a href="{% url 'users:login' %}">fazer login</a>.</h2>
+            {% endif %}
+            <br>
+            <a href="{% url 'posts:detail' post.pk %}"><button>Voltar</button></a>
+        </div>
     </body>
+    <style>
+        body{
+            font-family: monospace;
+            background-color: cadetblue;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            border: none;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        #salvar{
+            border: none;
+            cursor: pointer;
+        }
+        a{
+            color: black;
+        }
+        #conteudo{
+            border: solid 1px darkslategray;
+            padding: 10px 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </html>

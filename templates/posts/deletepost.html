@@ -5,14 +5,49 @@
         <title>Deletar posts</title>
     </head>
     <body>
-        <h4>Deletar post?</h4>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h5>{{posts.title}}</h5><br>
-            {{posts.text}}<br><br>
-            <input type="submit" value="Deletar">
-        </form>
-        <br>
-        <a href="{% url 'posts:detail' posts.pk %}"><button>Voltar</button></a>
+        <div id="conteudo">
+            {% if request.user == posts.author %}
+                <h4>Deletar post?</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h5>{{posts.title}}</h5><br>
+                {{posts.text}}<br><br>
+                <input id="deletar" type="submit" value="Deletar">
+            </form>
+            {% else %}
+                <h2>Você não pode excluir esse post.<br>Tente <a href="{% url 'users:login' %}">fazer login</a>.</h2>
+            {% endif %}
+            <br>
+            <a href="{% url 'posts:detail' posts.pk %}"><button>Voltar</button></a>
+        </div>
     </body>
+    <style>
+        body{
+            font-family: monospace;
+            background-color: cadetblue;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            border: none;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        #deletar{
+            border: none;
+            cursor: pointer;
+        }
+        a{
+            color: black;
+        }
+        #conteudo{
+            width: 60%;
+            height: max-content;
+            border: solid 1px darkslategray;
+            padding: 10px 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </html> 

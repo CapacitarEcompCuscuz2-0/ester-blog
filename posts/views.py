@@ -36,6 +36,7 @@ class PostDeleteView(generic.DeleteView):
 class PostUpdateView(generic.UpdateView):
     model = Post
     template_name = 'posts/update.html'
+    context_object_name = 'post'
     success_url = reverse_lazy('posts:allposts')
     fields = ['title', 'text']
 
