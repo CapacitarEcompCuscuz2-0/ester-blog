@@ -132,3 +132,7 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'posts:allposts'
+LOGOUT_REDIRECT_URL = 'posts:allposts' 

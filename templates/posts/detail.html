@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{posts.title}} - Blog da Bolinha</title>
+    </head>
+    <body>
+        <h4>Detalhes</h4><br>
+        <h3>{{posts.title}}</h3>
+        <h4>{{posts.author}}</h4><br>
+        {{posts.text}}<br><br>
+        <a href="{% url 'posts:update' posts.pk %}"><button>Editar Post</button></a>
+        <a href="{% url 'posts:allposts' %}"><button>Voltar</button></a>
+    </body>
+</html> 
