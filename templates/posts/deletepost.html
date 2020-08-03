@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Deletar posts</title>
+    </head>
+    <body>
+        <h4>Deletar post?</h4>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>{{posts.title}}</h5><br>
+            {{posts.text}}<br><br>
+            <input type="submit" value="Deletar">
+        </form>
+        <br>
+        <a href="{% url 'posts:allposts' %}"><button>Voltar</button></a>
+    </body>
+</html> 
