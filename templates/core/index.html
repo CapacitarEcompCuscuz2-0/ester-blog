@@ -1,10 +1,40 @@
-
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Página Principal</title>
+    </head>
     <body>
-        <p>Você está na página principal</p>
-        <a href="{% url 'core:teste' %}"><button>Teste</button></a>
-        <a href="{% url 'core:musician' %}"><button>Musico</button></a>
-        <a href="{% url 'posts:index' %}"><button>Blog</button></a>
+        <div id="conteudo">
+            <h2>Você está na página principal</h2>
+            <a href="{% url 'core:teste' %}"><button>Teste</button></a>
+            <a href="{% url 'core:musician' %}"><button>Musico</button></a>
+            <a href="{% url 'posts:index' %}"><button>Blog</button></a>
+        </div>
     </body>
+    <style>
+        body{
+            height: 100vh;
+            font-family: monospace;
+            background-color: cadetblue;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        #conteudo{
+            height: 20vh;
+            width: max-content;
+            border: solid 1px darkslategray;
+            padding: 10px 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        button{
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </html>

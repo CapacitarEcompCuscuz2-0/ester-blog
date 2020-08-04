@@ -12,16 +12,18 @@
             <p>{{posts.text}}</p><br><br>
             <a href="{% url 'posts:update' posts.pk %}"><button>Editar Post</button></a>
             <a href="{% url 'posts:deletepost' posts.pk %}"><button>Excluir Post</button></a>
-            <a href="{% url 'posts:allposts' %}"><button>Voltar</button></a>
+            <a href="{% url 'posts:allposts' %}"><button>Todos os Posts</button></a>
         </div>
     </body>
     <style>
         body{
+            height: 100vh;
             font-family: monospace;
             background-color: cadetblue;
             margin: 0;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
         button{
             border: none;

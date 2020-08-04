@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Espaço de {{request.user.username}}</title>
+    </head>
     <body>
         <div id="conteudo">
             <h1>Espaço do usuário</h1>
@@ -8,7 +12,7 @@
                 <br>
                     {% for post in user.user_posts.all %}
                     <div class="post">
-                        <h3>{{post.title}}</h3>
+                        <a href="{% url 'posts:detail' post.pk %}"><h3>{{post.title}}</h3></a>
                         <h5>Às {{post.post_date}}</h5>
                         <p>{{post.text}}</p>
                     </div>    
@@ -44,6 +48,9 @@
         button{
             border: none;
             cursor: pointer;
+        }
+        a{
+            color: black;
         }
     </style>
 </html> 
